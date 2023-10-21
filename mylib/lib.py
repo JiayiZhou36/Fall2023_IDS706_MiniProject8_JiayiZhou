@@ -103,9 +103,11 @@ def query(query):
                 key_retro,
             ) = result
             print(
-                f"Result: id={id}, name={name}, year={year}, team={team}, league={league}, "
+                f"Result: id={id}, name={name}, year={year},"
+                f"team={team}, league={league},"
                 f"goose_eggs={goose_eggs}, broken_eggs={broken_eggs}, mehs={mehs}, "
-                f"league_average_gpct={league_average_gpct}, ppf={ppf}, replacement_gpct={replacement_gpct}, "
+                f"league_average_gpct={league_average_gpct}, ppf={ppf}, "
+                f"replacement_gpct={replacement_gpct},"
                 f"gwar={gwar}, key_retro={key_retro}"
             )
 
