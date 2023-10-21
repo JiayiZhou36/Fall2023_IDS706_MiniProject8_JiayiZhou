@@ -8,10 +8,10 @@ const LOG_FILE: &str = "rust_query_log.md";
 
 pub fn log_query(message: &str, time: &u128, memory_used: &u64) -> Result<()> {
     if let Ok(mut file) = OpenOptions::new().create(true).append(true).open(LOG_FILE) {
-        writeln!(file, "\nThe action is {}\n\n\n", message).expect("Error writing to log file");
-        writeln!(file, "Elapsed time: {} microseconds\n\n\n", time)
+        writeln!(file, "\nThe query is {}\n", message).expect("Error writing to log file");
+        writeln!(file, "Elapsed time: {} microseconds\n", time)
             .expect("Error writing to log file");
-        writeln!(file, "- Memory used: {} kB\n", memory_used).expect("Error writing to log file");
+        writeln!(file, " Memory used: {} kB\n", memory_used).expect("Error writing to log file");
     } else {
         eprintln!("Error opening log file for writing.");
     }

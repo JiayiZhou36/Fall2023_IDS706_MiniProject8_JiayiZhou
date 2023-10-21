@@ -6,7 +6,6 @@ from mylib.lib import extract, transform_load, query, log_query
 
 
 def main():
-    """Main function"""
     start_time = time.perf_counter()
     memory_before = psutil.virtual_memory().used / (1024.0)
 
@@ -27,12 +26,6 @@ def main():
         memory_after = psutil.virtual_memory().used / (1024.0)
         memory_used = memory_after - memory_before
 
-        log_query(
-            args[1],
-            elapsed_time_micros,
-            memory_used,
-        )
-
     elif action == "transform_load":
         result = transform_load("data/Goose.csv")
         if isinstance(result, str):
@@ -44,11 +37,6 @@ def main():
         memory_after = psutil.virtual_memory().used / (1024.0)
         memory_used = memory_after - memory_before
 
-        log_query(
-            args[1],
-            elapsed_time_micros,
-            memory_used,
-        )
     elif action == "query":
         if len(args) >= 3:
             query_result = query(args[2])
@@ -64,7 +52,7 @@ def main():
         memory_used = memory_after - memory_before
 
         log_query(
-            args[1],
+            args[2],
             elapsed_time_micros,
             memory_used,
         )
