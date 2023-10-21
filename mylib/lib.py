@@ -7,10 +7,12 @@ import csv
 LOG_FILE = "python_query_log.md"
 
 
-def log_query(query):
+def log_query(message, time, memory_used):
     """adds to a query markdown file"""
     with open(LOG_FILE, "a") as file:
-        file.write(f"```sql\n{query}\n```\n\n")
+        file.write(f"\nThe action is {message}\n\n\n")
+        file.write(f"Elapsed time: {time} microseconds\n\n\n")
+        file.write(f"- Memory used: {memory_used} kB\n")
 
 
 def extract(url, file_path, directory):
@@ -117,7 +119,6 @@ def query(query):
 
     conn.commit()
     conn.close()
-    log_query(query)
     return "Goose.db"
 
 

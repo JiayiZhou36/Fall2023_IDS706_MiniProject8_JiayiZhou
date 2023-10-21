@@ -13,6 +13,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: sleep for 200 seconds
         run: sleep 200
+      - name: fetch and reset
+        run: git fetch && git reset --hard origin/main
+      - name: pull 
+        run: git pull
       - name: install packages
         run: make python_install
       - name: lint
@@ -21,10 +25,6 @@ jobs:
         run: make python_test
       - name: format
         run: make python_format
-      - name: fetch and reset
-        run: git fetch && git reset --hard origin/main
-      - name: pull 
-        run: git pull
       - name: generate_and_push
         run: make generate_and_push
       - name: deploy
