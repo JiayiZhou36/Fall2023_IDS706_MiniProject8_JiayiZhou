@@ -1,8 +1,8 @@
 """Library for the goose project"""
 import os
 import sqlite3
-import requests
 import csv
+import requests
 
 LOG_FILE = "python_query_log.md"
 

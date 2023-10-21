@@ -1,11 +1,12 @@
+"""Import Libraries"""
 import sys
-from mylib.lib import extract, transform_load, query, log_query
-import argparse
 import time
 import psutil
+from mylib.lib import extract, transform_load, query, log_query
 
 
 def main():
+    """Main function"""
     start_time = time.perf_counter()
     memory_before = psutil.virtual_memory().used / (1024.0)
 
