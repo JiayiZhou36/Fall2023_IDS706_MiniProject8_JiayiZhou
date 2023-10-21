@@ -1,8 +1,13 @@
-use jiayi_zhou_sqlite::{extract, query, transform_load};
+use jiayi_zhou_sqlite::{extract, query, transform_load, log_query};
 use std::env;
+use std::time::Instant;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+
+    let start_time = Instant::now();
+    let mem_info_before = sys_info::mem_info().unwrap();
+
     if args.len() < 2 {
         println!("Usage: {} [action]", args[0]);
         return;
@@ -35,5 +40,18 @@ fn main() {
         _ => {
             println!("Invalid action. Use 'extract', 'transform_load', or 'query'.");
         }
+    }
+    let end_time = Instant::now();
+    let elapsed_time = end_time.duration_since(start_time);
+    let mem_info_after = sys_info::mem_info().unwrap();
+    let mem_used = mem_info_after.total - mem_info_before.total;
+
+    match log_query(
+        &action,
+        &elapsed_time.as_micros(),
+        &mem_used,
+    ) {
+        Ok(_) => {}
+        Err(e) => println!("Error: {:?}", e),
     }
 }
