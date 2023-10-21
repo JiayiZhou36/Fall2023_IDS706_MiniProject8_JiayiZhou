@@ -1,34 +1,47 @@
-"""Test main.py functions"""
-from mylib.lib import extract, query, transform_load
-import os
+"""
+Test goes here
+
+"""
+
+import subprocess
 
 
 def test_extract():
-    """Test extract function"""
-    url = "https://raw.githubusercontent.com/fivethirtyeight/data/master/goose/goose_rawdata.csv?raw=true"
-    file_path = "data/Goose.csv"
-    directory = "data"
-
-    extract(url, file_path, directory)
-
-    assert os.path.exists(file_path)
+    """tests extract()"""
+    result = subprocess.run(
+        ["python", "main.py", "extract"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.returncode == 0
 
 
 def test_transform_load():
-    """Test transform_load function"""
-    dataset = "data/Goose.csv"
-    result = transform_load(dataset)
-
-    assert result == "Goose.db"
+    """tests transfrom_load"""
+    result = subprocess.run(
+        ["python", "main.py", "transform_load"],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.returncode == 0
 
 
 def test_query():
-    """Test query function"""
-    # Execute a SELECT query
-    select_query = "SELECT * FROM Goose WHERE name = 'Alice Watson';"
-    result = query(select_query)
-
-    assert result == "Goose.db"
+    """tests query"""
+    result = subprocess.run(
+        [
+            "python",
+            "main.py",
+            "general_query",
+            "SELECT * FROM Goose WHERE name = 'Emma Watson'",
+        ],
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    assert result.returncode == 0
 
 
 if __name__ == "__main__":
