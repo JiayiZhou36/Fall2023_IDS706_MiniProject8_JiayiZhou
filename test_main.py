@@ -25,7 +25,7 @@ def test_transform_load():
 def test_query():
     """Test query function"""
     # Execute a SELECT query
-    select_query = "SELECT * FROM Goose WHERE name = 'Emma Watson';"
+    select_query = "SELECT * FROM Goose WHERE name = 'Alice Watson';"
     result = query(select_query)
 
     assert result is None
