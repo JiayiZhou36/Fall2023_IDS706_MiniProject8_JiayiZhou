@@ -1,4 +1,4 @@
-use jiayi_zhou_sqlite::{extract, query, transform_load, log_query};
+use jiayi_zhou_sqlite::{extract, log_query, query, transform_load};
 use std::env;
 use std::time::Instant;
 
@@ -46,11 +46,7 @@ fn main() {
     let mem_info_after = sys_info::mem_info().unwrap();
     let mem_used = mem_info_after.total - mem_info_before.total;
 
-    match log_query(
-        &action,
-        &elapsed_time.as_micros(),
-        &mem_used,
-    ) {
+    match log_query(&action, &elapsed_time.as_micros(), &mem_used) {
         Ok(_) => {}
         Err(e) => println!("Error: {:?}", e),
     }
