@@ -53,7 +53,22 @@ def transform_load(dataset):
 
         for row in csvreader:
             cursor.execute(
-                "INSERT INTO Goose (name, year, team, league, goose_eggs, broken_eggs, mehs, league_average_gpct, ppf, replacement_gpct, gwar, key_retro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                """
+        INSERT INTO Goose (
+            name,
+            year,
+            team,
+            league,
+            goose_eggs,
+            broken_eggs,
+            mehs,
+            league_average_gpct,
+            ppf,
+            replacement_gpct,
+            gwar,
+            key_retro
+            ) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 row,
             )
 
@@ -88,8 +103,12 @@ def query(query):
                 key_retro,
             ) = result
             print(
-                f"Result: id={id}, name={name}, year={year}, team={team}, league={league}, goose_eggs={goose_eggs}, broken_eggs={broken_eggs}, mehs={mehs}, league_average_gpct={league_average_gpct}, ppf={ppf}, replacement_gpct={replacement_gpct}, gwar={gwar}, key_retro={key_retro}"
+                f"Result: id={id}, name={name}, year={year}, team={team}, league={league}, "
+                f"goose_eggs={goose_eggs}, broken_eggs={broken_eggs}, mehs={mehs}, "
+                f"league_average_gpct={league_average_gpct}, ppf={ppf}, replacement_gpct={replacement_gpct}, "
+                f"gwar={gwar}, key_retro={key_retro}"
             )
+
     else:
         # other CUD operations
         cursor.execute(query)
