@@ -21,7 +21,9 @@ jobs:
         run: make python_test
       - name: format
         run: make python_format
-      - name: pull Repository
+      - name: fetch and reset
+        run: git fetch && git reset --hard origin/main
+      - name: pull 
         run: git pull
       - name: generate_and_push
         run: make generate_and_push
