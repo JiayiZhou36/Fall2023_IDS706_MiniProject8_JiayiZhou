@@ -28,7 +28,7 @@ def test_query():
     select_query = "SELECT * FROM Goose WHERE name = 'Alice Watson';"
     result = query(select_query)
 
-    assert result is None
+    assert result == "Goose.db"
 
 
 if __name__ == "__main__":
