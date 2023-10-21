@@ -4,6 +4,7 @@ Test goes here
 """
 
 import subprocess
+from mylib.lib import extract, query, transform_load
 
 
 def test_extract():
