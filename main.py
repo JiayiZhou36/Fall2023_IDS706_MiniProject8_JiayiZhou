@@ -3,11 +3,13 @@ import sys
 import time
 import psutil
 from mylib.lib import extract, transform_load, query, log_query
+import os
 
 
 def main():
     start_time = time.perf_counter()
-    memory_before = psutil.virtual_memory().used / (1024.0)
+    print(psutil.Process(os.getpid()).memory_info().rss / 1024**2)
+    memory_before = psutil.Process(os.getpid()).memory_info().rss / 1024
 
     args = sys.argv
     if len(args) < 2:
@@ -36,7 +38,7 @@ def main():
                 print("Query executed successfully!")
                 end_time = time.perf_counter()
                 elapsed_time_micros = (end_time - start_time) * 1e6
-                memory_after = psutil.virtual_memory().used / (1024.0)
+                memory_after = psutil.Process(os.getpid()).memory_info().rss / 1024
                 memory_used = memory_after - memory_before
                 print(memory_used)
 

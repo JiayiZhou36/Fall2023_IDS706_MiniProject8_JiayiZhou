@@ -12,7 +12,7 @@ def log_query(message, time, memory_used):
     with open(LOG_FILE, "a") as file:
         file.write(f"\nThe query is {message}\n\n\n")
         file.write(f"Elapsed time: {time} microseconds\n\n\n")
-        file.write(f"- Memory used: {memory_used} kB\n")
+        file.write(f"Memory used: {memory_used} kB\n")
 
 
 def extract(url, file_path, directory):

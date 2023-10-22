@@ -6,7 +6,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let start_time = Instant::now();
-    let mem_info_before = sys_info::mem_info().unwrap();
+    let mem_info_before: sys_info::MemInfo = sys_info::mem_info().unwrap();
 
     if args.len() < 2 {
         println!("Usage: {} [action]", args[0]);
