@@ -12,3 +12,10 @@ Elapsed time: 119759 microseconds
 
  Memory used: 0 kB
 
+
+The query is extract
+
+Elapsed time: 135814 microseconds
+
+ Memory used: 0 kB
+
