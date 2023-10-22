@@ -21,6 +21,17 @@ fn main() {
                 "data/Goose.csv",
                 "data",
             );
+            let end_time = Instant::now();
+            let _elapsed_time = end_time.duration_since(start_time);
+            let duration = start_time.elapsed();
+
+            let mem_info_after = sys_info::mem_info().unwrap();
+            let mem_used = mem_info_after.total - mem_info_before.total;
+
+            match log_query(action, &duration.as_micros(), &mem_used) {
+                Ok(_) => {}
+                Err(e) => println!("Error: {:?}", e),
+            }
         }
         "transform_load" => match transform_load("data/Goose.csv") {
             Ok(_) => println!("Data loaded successfully!"),
@@ -32,15 +43,6 @@ fn main() {
                     eprintln!("Error: {:?}", err);
                 } else {
                     println!("Query executed successfully!");
-                    let end_time = Instant::now();
-                    let elapsed_time = end_time.duration_since(start_time);
-                    let mem_info_after = sys_info::mem_info().unwrap();
-                    let mem_used = mem_info_after.total - mem_info_before.total;
-
-                    match log_query(&q, &elapsed_time.as_micros(), &mem_used) {
-                        Ok(_) => {}
-                        Err(e) => println!("Error: {:?}", e),
-                    }
                 }
             } else {
                 println!("Usage: {} query [SQL query]", args[0]);

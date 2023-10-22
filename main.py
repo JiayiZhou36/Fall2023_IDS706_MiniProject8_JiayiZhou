@@ -8,7 +8,7 @@ import os
 
 def main():
     start_time = time.perf_counter()
-    print(psutil.Process(os.getpid()).memory_info().rss / 1024**2)
+    # print(psutil.Process(os.getpid()).memory_info().rss / 1024**2)
     memory_before = psutil.Process(os.getpid()).memory_info().rss / 1024
 
     args = sys.argv
@@ -23,6 +23,17 @@ def main():
             "data/Goose.csv",
             "data",
         )
+        end_time = time.perf_counter()
+        elapsed_time_micros = (end_time - start_time) * 1e6
+        memory_after = psutil.Process(os.getpid()).memory_info().rss / 1024
+        memory_used = memory_after - memory_before
+        # print(memory_used)
+
+        log_query(
+            action,
+            elapsed_time_micros,
+            memory_used,
+        )
 
     elif action == "transform_load":
         result = transform_load("data/Goose.csv")
@@ -36,17 +47,6 @@ def main():
             query_result = query(args[2])
             if query_result == "succcess":
                 print("Query executed successfully!")
-                end_time = time.perf_counter()
-                elapsed_time_micros = (end_time - start_time) * 1e6
-                memory_after = psutil.Process(os.getpid()).memory_info().rss / 1024
-                memory_used = memory_after - memory_before
-                print(memory_used)
-
-                log_query(
-                    args[2],
-                    elapsed_time_micros,
-                    memory_used,
-                )
             else:
                 print(f"Error: {query_result}")
         else:
