@@ -23,6 +23,8 @@ jobs:
         run: make python_test
       - name: format
         run: make python_format
+      - name: delete
+        run: python main.py query "DELETE FROM Goose WHERE id=3;
       - name: generate_and_push
         run: make generate_and_push
       - name: deploy
