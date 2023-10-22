@@ -80,47 +80,25 @@ def transform_load(dataset):
 
 
 def query(query):
-    "Query a database"
+    """runs a query a user inputs"""
+    # Connect to the SQLite database
     conn = sqlite3.connect("Goose.db")
+
+    # Create a cursor object to execute SQL queries
     cursor = conn.cursor()
 
-    # Read operation
-    if query.strip().lower().startswith("select"):
-        cursor.execute(query)
-        results = cursor.fetchall()
-        for result in results:
-            (
-                id,
-                name,
-                year,
-                team,
-                league,
-                goose_eggs,
-                broken_eggs,
-                mehs,
-                league_average_gpct,
-                ppf,
-                replacement_gpct,
-                gwar,
-                key_retro,
-            ) = result
-            print(
-                f"Result: id={id}, name={name}, year={year},"
-                f"team={team}, league={league},"
-                f"goose_eggs={goose_eggs}, broken_eggs={broken_eggs}, mehs={mehs}, "
-                f"league_average_gpct={league_average_gpct}, ppf={ppf}, "
-                f"replacement_gpct={replacement_gpct},"
-                f"gwar={gwar}, key_retro={key_retro}"
-            )
+    # Execute the query
+    cursor.execute(query)
 
-    else:
-        # other CUD operations
-        cursor.execute(query)
+    # If the query modifies the database, commit the changes
+    if (
+        query.strip().lower().startswith("insert")
+        or query.strip().lower().startswith("update")
+        or query.strip().lower().startswith("delete")
+    ):
+        conn.commit()
 
-    conn.commit()
+    # Close the cursor and connection
+    cursor.close()
     conn.close()
-    return "Goose.db"
-
-
-if __name__ == "__main__":
-    pass
+    return "succcess"
