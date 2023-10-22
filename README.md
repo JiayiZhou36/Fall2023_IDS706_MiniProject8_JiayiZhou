@@ -54,8 +54,9 @@ It measures and logs the elapsed time for the extraction operation specifically 
 
 ### Comparison
 The python time and memory usage file is [here](https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/blob/main/python_query_log.md) and the Rust time and memory usage file is [here](https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/blob/main/rust_query_log.md). Also, as we can see from the screenshots below, python take more memory and more time to process the same function. As mentioned in class, the time improvement may because Rust is a compiled language, which means the code is translated into machine code before execution. Python, on the other hand, is an interpreted language, and code is executed line by line. This compilation step in Rust allows for optimizations that can make it more efficient in terms of both time and memory. The memory improvement may because Rust is a statically typed language, which means variable types are known at compile-time. Python, however, is dynamically typed, and type information is checked at runtime. This can result in more efficient memory usage.
-<img width="655" alt="Screenshot 2023-10-21 at 9 52 05 PM" src="https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/assets/143651921/2c0de291-e319-4828-967a-6db71ce468ac">
-<img width="625" alt="Screenshot 2023-10-21 at 9 51 59 PM" src="https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/assets/143651921/26b489c1-5cc5-4347-ab6e-41c592398d28">
+<img width="1183" alt="Screenshot 2023-10-21 at 10 04 50 PM" src="https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/assets/143651921/07027de2-b2a9-4a0a-9226-0583d5ce5a5c">
+<img width="1179" alt="Screenshot 2023-10-21 at 10 04 40 PM" src="https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/assets/143651921/c2096575-1da8-4116-8280-acec1642eb7b">
+
 
 
 
