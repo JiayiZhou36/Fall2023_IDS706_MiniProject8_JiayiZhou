@@ -47,13 +47,13 @@ It measures and logs the elapsed time for the extraction operation specifically 
 2. wait for codespaces to be built
 3. install: `make python_install`
 
-### Check Format and Test Errors: 
+##### Check Format and Test Errors: 
 1. Format code `make python_format`
 2. Lint code `make python_lint`
 3. Test coce `make python_test`
 
 ### Comparison
-The python time and memory usage file is [here](https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/blob/main/python_query_log.md) and the Rust time and memory usage file is [here](https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/blob/main/rust_query_log.md). Also, as we can see from the screenshots below, python take more memory and more time to process the same function.
+The python time and memory usage file is [here](https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/blob/main/python_query_log.md) and the Rust time and memory usage file is [here](https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/blob/main/rust_query_log.md). Also, as we can see from the screenshots below, python take more memory and more time to process the same function. As mentioned in class, the time improvement may because Rust is a compiled language, which means the code is translated into machine code before execution. Python, on the other hand, is an interpreted language, and code is executed line by line. This compilation step in Rust allows for optimizations that can make it more efficient in terms of both time and memory. The memory improvement may because Rust is a statically typed language, which means variable types are known at compile-time. Python, however, is dynamically typed, and type information is checked at runtime. This can result in more efficient memory usage.
 <img width="655" alt="Screenshot 2023-10-21 at 9 52 05 PM" src="https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/assets/143651921/2c0de291-e319-4828-967a-6db71ce468ac">
 <img width="625" alt="Screenshot 2023-10-21 at 9 51 59 PM" src="https://github.com/nogibjj/Fall2023_IDS706_MiniProject8_JiayiZhou/assets/143651921/26b489c1-5cc5-4347-ab6e-41c592398d28">
 
